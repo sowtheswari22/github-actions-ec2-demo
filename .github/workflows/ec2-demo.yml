@@ -1,4 +1,4 @@
-2 name: EC2 Print Demo
+name: EC2 Print Demo
 
 on:
   push:
