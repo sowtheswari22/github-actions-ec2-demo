@@ -1,0 +1,28 @@
+name: EC2 Print  Demo
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Show pull step
+        run: |
+          echo "Repository pulled successfully!"
+          ls -l
+
+      - name: Show EC2 info and scybers.txt
+        run: |
+          echo "Connecting to EC2..."
+          echo "Server IP: ${{ secrets.SERVER_IP }}"
+          echo "User: ${{ secrets.SERVER_USER }}"
+          echo "Using Token: ${{ secrets.ACCESS_TOKEN }}"
+          echo "Content of scybers.txt on EC2:"
+          ssh ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_IP }} "cat /home/${{ secrets.SERVER_USER }}/scybers.txt"
+
