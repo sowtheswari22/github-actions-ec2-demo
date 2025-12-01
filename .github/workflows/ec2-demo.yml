@@ -1,4 +1,4 @@
-name: EC2 Print Demo
+2 name: EC2 Print Demo
 
 on:
   push:
@@ -24,7 +24,7 @@ jobs:
 
           # Pull latest repo and show file
           ssh -o StrictHostKeyChecking=no -i key.pem $SERVER_USER@$SERVER_IP "
-            cd /home/$SERVER_USER/repo || exit
+            cd /home/ec2-user/github-actions-ec2-demo || exit
             git pull
             cat scybers.txt
           "
